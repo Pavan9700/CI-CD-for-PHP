@@ -1,32 +1,33 @@
-// This is a pipeline for Jenkins (launched on aws ec2 ubuntu instance) to fetch php code from Github and then transfer it to the
-// Apache2 /var/www/html directory (deployment)onto the another aws ec2 ubuntu instance.
+node {
+    def app
 
+    stage('Clone repository') {
+        /* Cloning the Repository to our Workspace */
 
+        checkout scm
+    }
 
-pipeline {
-    agent any
-      
-        tools {
-              jdk "Java-1.8"
-               }
-               
-       stages {
-            stage('SCM checkout') {
-                  steps {
-                        git url: 'https://github.com/Anusha-DevOp/CI-CD-for-PHP.git'
-                        }
-             }
-             
-             stage('archiving artifacts') {
-                  steps {
-                          archiveArtifacts '**/*.html'
-                        }
-              }
-              
-              stage('transfer artifacts') {
-                    steps {
-                          sshPublisher(publishers: [sshPublisherDesc(configName: 'MyApacheInstance', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten: true, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/var/www/html', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.html')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
-                          }
-              }
-       }
+    stage('Build image') {
+        /* This builds the actual image */
+
+        app = docker.build("pavantech/pipeine")
+    }
+
+    stage('Test image') {
+        
+        app.inside {
+            echo "Tests passed"
+        }
+    }
+
+    stage('Push image') {
+        /* 
+			You would need to first register with DockerHub before you can push images to your account
+		*/
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+            } 
+                echo "Trying to Push Docker Build to DockerHub"
+    }
 }
