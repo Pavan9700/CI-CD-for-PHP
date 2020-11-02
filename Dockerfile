@@ -3,7 +3,7 @@
 #RUN --chown -R www-data:www-data /var/www/html
 #COPY src/*.html /var/www/html/
 # Source Image
-FROM Ubuntu:20.04
+FROM ubuntu:20.04
 # Mainter Name
 maintainer Unknown
 # Command to update and install Apache packages
