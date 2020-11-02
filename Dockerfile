@@ -14,7 +14,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get install ca-certificates apt-transport-https -y
 RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add -
 RUN echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
-RUN apt-get install install php7.2 php7.2-cli php7.2-common -y
+RUN apt-get install php7.2 php7.2-cli php7.2-common -y
 RUN apt-get install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-intl php7.2-mysql php7.2-xml php7.2-zip -y
 # Update our TimeZone in php.ini file
 RUN echo "date.timezone = Asia/Kolkata" > /etc/php/7.2/apache2/php.ini
