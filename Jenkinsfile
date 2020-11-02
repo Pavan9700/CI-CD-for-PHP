@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("pavantech/pipeine")
+        app = docker.build("pavantech/test2")
     }
 
     stage('Test image') {
