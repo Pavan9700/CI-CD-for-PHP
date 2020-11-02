@@ -23,7 +23,7 @@ RUN mkdir /var/www/html/web1/
 RUN mkdir /var/www/html/web1/public/
 RUN mkdir /var/www/html/web1/logs/
 # Copy index.html and info.php file to Web document folder
-copy example.html /var/www/html/web1/public
+copy example.html /var/www/html.index.html
 copy info.php /var/www/html/web1/public
 copy info.php /var/www/html
 #Copy apache virual hostconfiguration file and enable it
