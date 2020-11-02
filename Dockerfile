@@ -11,7 +11,9 @@ RUN apt-get update && apt-get install apache2 -y
 #to pass all the interactive pop up auto
 ARG DEBIAN_FRONTEND=noninteractive
 #Commands to install php7.2 including other modules
-RUN apt-get install php7.2 -y && apt-get install php7.2-cli -y && apt-get install php7.2-common -y
+RUN add-apt-repository ppa:ondrej/php -y
+RUN apt-get update -y && apt-get install php7.2 -y
+RUN apt-get install php7.2-cli -y && apt-get install php7.2-common -y
 RUN apt-get install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-intl php7.2-mysql php7.2-xml php7.2-zip -y
 # Update our TimeZone in php.ini file
 RUN echo "date.timezone = Asia/Kolkata" > /etc/php/7.2/apache2/php.ini
