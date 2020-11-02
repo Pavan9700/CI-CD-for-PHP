@@ -7,7 +7,7 @@ from ubuntu:16.04
 # Mainter Name
 maintainer Unknown
 # Command to update and install Apache packages
-RUN sudo apt-get update && apt-get install apache2 -y
+RUN apt-get update && apt-get install apache2 -y
 #to pass all the interactive pop up auto
 ARG DEBIAN_FRONTEND=noninteractive
 #Commands to install php7.2 including other modules
