@@ -19,12 +19,12 @@ RUN apt-get install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-int
 # Update our TimeZone in php.ini file
 RUN echo "date.timezone = Asia/Kolkata" > /etc/php/7.2/apache2/php.ini
 #Create website document root directoy and logs folder
-RUN mkdir /var/www/html/web1/
-RUN mkdir /var/www/html/web1/public/
-RUN mkdir /var/www/html/web1/logs/
+#RUN mkdir /var/www/html/web1/
+#RUN mkdir /var/www/html/web1/public/
+#RUN mkdir /var/www/html/web1/logs/
 # Copy index.html and info.php file to Web document folder
-copy example.html /var/www/html.index.html
-copy info.php /var/www/html/web1/public
+copy example.html /var/www/html/index.html
+#copy info.php /var/www/html/web1/public
 copy info.php /var/www/html
 #Copy apache virual hostconfiguration file and enable it
 copy example.conf /etc/apache2/sites-available/
