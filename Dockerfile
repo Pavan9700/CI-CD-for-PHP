@@ -7,13 +7,13 @@ from ubuntu:16.04
 # Mainter Name
 maintainer Unknown
 # Command to update and install Apache packages
-RUN apt-get update && apt-get install apache2 -y
+RUN apt-get update && apt-get install wget apache2 -y
 #to pass all the interactive pop up auto
 ARG DEBIAN_FRONTEND=noninteractive
 #Commands to install php7.2 including other modules
 RUN apt-get install ca-certificates apt-transport-https -y
-RUN wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
-RUN echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
+RUN wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add -
+RUN echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list
 RUN apt-get install install php7.2 php7.2-cli php7.2-common -y
 RUN apt-get install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-intl php7.2-mysql php7.2-xml php7.2-zip -y
 # Update our TimeZone in php.ini file
