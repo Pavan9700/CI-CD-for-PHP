@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install apache2 -y
 #to pass all the interactive pop up auto
 ARG DEBIAN_FRONTEND=noninteractive
 #Commands to install php7.2 including other modules
-RUN apt install ca-certificates apt-transport-https
+RUN apt-get install ca-certificates apt-transport-https -y
 RUN wget -q https://packages.sury.org/php/apt.gpg -O- | sudo apt-key add -
 RUN echo "deb https://packages.sury.org/php/ stretch main" | sudo tee /etc/apt/sources.list.d/php.list
 RUN apt-get install install php7.2 php7.2-cli php7.2-common -y
