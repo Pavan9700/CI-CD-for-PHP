@@ -1,12 +1,7 @@
-#FROM php:7.2-apache
-#COPY src/*.html /var/www/html/
-#RUN --chown -R www-data:www-data /var/www/html
-#COPY src/*.html /var/www/html/
-# Source Image
 # Source Image name
 FROM ubuntu:18.04
 # Mainter Name
-maintainer pavan
+maintainer Pavan
 # Command to update and install Apache packages
 RUN apt-get update && apt-get install apache2 -y
 #to pass all the interactive pop up auto
@@ -21,15 +16,16 @@ RUN mkdir /var/www/html/web1/
 RUN mkdir /var/www/html/web1/public/
 RUN mkdir /var/www/html/web1/logs/
 # Copy index.html and info.php file to Web document folder
-copy index.html /var/www/html/web1/public
+copy index.html /var/www/html
 copy info.php /var/www/html/web1/public
 copy info.php /var/www/html
 #Copy apache virual hostconfiguration file and enable it
-copy example.conf /etc/apache2/sites-available/
-RUN a2ensite example.conf
+copy testamar.conf /etc/apache2/sites-available/
+RUN a2ensite testamar.conf
 #Check apache server configuration
 RUN apachectl -t
-# open port 
+# open port
 EXPOSE 80
 # Command to run Apache server in background
 CMD /usr/sbin/apache2ctl -D FOREGROUND
+
