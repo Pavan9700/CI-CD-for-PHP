@@ -28,7 +28,7 @@ copy info.php /var/www/html/web1/public
 copy info.php /var/www/html
 #Copy apache virual hostconfiguration file and enable it
 copy testamar.conf /etc/apache2/sites-available/
-RUN a2ensite testamar.conf
+RUN a2ensite example.conf
 #Check apache server configuration
 RUN apachectl -t
 # open port 
