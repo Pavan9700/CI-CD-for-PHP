@@ -6,7 +6,8 @@
 from ubuntu:16.04
 # Mainter Name
 maintainer Unknown
-RUN apt-transport-https -y
+#RUN apt-transport-https -y
+Run docker system prune
 # Command to update and install Apache packages
 RUN apt-get update && apt-get install apache2 -y
 #to pass all the interactive pop up auto
