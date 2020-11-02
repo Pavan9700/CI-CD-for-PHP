@@ -23,12 +23,12 @@ RUN mkdir /var/www/html/web1/
 RUN mkdir /var/www/html/web1/public/
 RUN mkdir /var/www/html/web1/logs/
 # Copy index.html and info.php file to Web document folder
-copy index.html /var/www/html/
+copy index.html /var/www/html/web1/public
 copy info.php /var/www/html/web1/public
 copy info.php /var/www/html
 #Copy apache virual hostconfiguration file and enable it
-copy example.conf /etc/apache2/sites-available/
-RUN a2ensite example.conf
+copy testamar.conf /etc/apache2/sites-available/
+RUN a2ensite testamar.conf
 #Check apache server configuration
 RUN apachectl -t
 # open port 
