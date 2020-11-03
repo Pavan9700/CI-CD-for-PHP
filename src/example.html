@@ -84,11 +84,11 @@
             if (isset($_POST['login']) && !empty($_POST['username']) 
                && !empty($_POST['password'])) {
 				
-               if ($_POST['username'] == 'Test' && 
-                  $_POST['password'] == '1234') {
+               if ($_POST['username'] == 'Username' && 
+                  $_POST['password'] == 'Password') {
                   $_SESSION['valid'] = true;
                   $_SESSION['timeout'] = time();
-                  $_SESSION['username'] = 'checkingpoint';
+                  $_SESSION['username'] = 'ExitpoinT';
                   
                   echo 'You have entered valid use name and password';
                }else {
